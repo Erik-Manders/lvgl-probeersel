@@ -86,5 +86,6 @@ void loop() {
 // Event-functie aangeroepen vanuit SquareLine UI (indien gedefinieerd)
 // void btn_click_action(lv_event_t * e) {
 //     Serial.println("Knop geklikt op het CYD scherm!");
+// nog een andere regel
 // extra regel
 // }
