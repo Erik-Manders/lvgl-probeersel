@@ -80,7 +80,7 @@ void setup() {
 
 void loop() {
     lv_timer_handler(); // Houdt LVGL en de UI actief
-    delay(5);
+    delay(10);
 }
 
 // Event-functie aangeroepen vanuit SquareLine UI (indien gedefinieerd)
