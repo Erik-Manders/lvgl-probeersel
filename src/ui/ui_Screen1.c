@@ -15,6 +15,8 @@ lv_obj_t * ui_Slider1 = NULL;
 lv_obj_t * ui_Button3 = NULL;
 lv_obj_t * ui_Checkbox1 = NULL;
 lv_obj_t * ui_Button4 = NULL;
+lv_obj_t * ui_Dropdown1 = NULL;
+lv_obj_t * ui_Slider2 = NULL;
 // event funtions
 void ui_event_Button3(lv_event_t * e)
 {
@@ -43,7 +45,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_remove_flag(ui_Panel1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     ui_Button1 = lv_button_create(ui_Screen1);
-    lv_obj_set_width(ui_Button1, 26);
+    lv_obj_set_width(ui_Button1, 59);
     lv_obj_set_height(ui_Button1, 43);
     lv_obj_set_x(ui_Button1, -72);
     lv_obj_set_y(ui_Button1, 4);
@@ -77,7 +79,7 @@ void ui_Screen1_screen_init(void)
     if(lv_obj_get_style_pad_top(ui_Slider1, LV_PART_MAIN) > 0) lv_obj_set_style_pad_right(ui_Slider1,
                                                                                               lv_obj_get_style_pad_right(ui_Slider1, LV_PART_MAIN) + 1, LV_PART_MAIN);
     ui_Button3 = lv_button_create(ui_Screen1);
-    lv_obj_set_width(ui_Button3, 62);
+    lv_obj_set_width(ui_Button3, 52);
     lv_obj_set_height(ui_Button3, 43);
     lv_obj_set_x(ui_Button3, 67);
     lv_obj_set_y(ui_Button3, 3);
@@ -91,20 +93,43 @@ void ui_Screen1_screen_init(void)
     lv_checkbox_set_text(ui_Checkbox1, "Checkbox");
     lv_obj_set_width(ui_Checkbox1, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Checkbox1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Checkbox1, -9);
-    lv_obj_set_y(ui_Checkbox1, -98);
+    lv_obj_set_x(ui_Checkbox1, 67);
+    lv_obj_set_y(ui_Checkbox1, -97);
     lv_obj_set_align(ui_Checkbox1, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Checkbox1, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
 
     ui_Button4 = lv_button_create(ui_Screen1);
     lv_obj_set_width(ui_Button4, 45);
-    lv_obj_set_height(ui_Button4, 31);
+    lv_obj_set_height(ui_Button4, 50);
+    lv_obj_set_x(ui_Button4, -5);
+    lv_obj_set_y(ui_Button4, 1);
     lv_obj_set_align(ui_Button4, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Button4, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
     lv_obj_remove_flag(ui_Button4, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_bg_color(ui_Button4, lv_color_hex(0xF3F006), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_Button4, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_Dropdown1 = lv_dropdown_create(ui_Screen1);
+    lv_dropdown_set_options(ui_Dropdown1, "Option 1\nOption 2\nOption 3");
+    lv_obj_set_width(ui_Dropdown1, 150);
+    lv_obj_set_height(ui_Dropdown1, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Dropdown1, -74);
+    lv_obj_set_y(ui_Dropdown1, -92);
+    lv_obj_set_align(ui_Dropdown1, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_Dropdown1, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+
+    ui_Slider2 = lv_slider_create(ui_Screen1);
+    lv_slider_set_value(ui_Slider2, 0, LV_ANIM_OFF);
+    if(lv_slider_get_mode(ui_Slider2) == LV_SLIDER_MODE_RANGE) lv_slider_set_start_value(ui_Slider2, 0, LV_ANIM_OFF);
+    lv_obj_set_width(ui_Slider2, 150);
+    lv_obj_set_height(ui_Slider2, 10);
+    lv_obj_set_x(ui_Slider2, -15);
+    lv_obj_set_y(ui_Slider2, 102);
+    lv_obj_set_align(ui_Slider2, LV_ALIGN_CENTER);
+
+    //Compensating for LVGL9.1 draw crash with bar/slider max value when top-padding is nonzero and right-padding is 0
+    if(lv_obj_get_style_pad_top(ui_Slider2, LV_PART_MAIN) > 0) lv_obj_set_style_pad_right(ui_Slider2,
+                                                                                              lv_obj_get_style_pad_right(ui_Slider2, LV_PART_MAIN) + 1, LV_PART_MAIN);
     lv_obj_add_event_cb(ui_Button3, ui_event_Button3, LV_EVENT_ALL, NULL);
     uic_Button1 = ui_Button1;
     uic_Button3 = ui_Button3;
@@ -126,5 +151,7 @@ void ui_Screen1_screen_destroy(void)
     ui_Button3 = NULL;
     ui_Checkbox1 = NULL;
     ui_Button4 = NULL;
+    ui_Dropdown1 = NULL;
+    ui_Slider2 = NULL;
 
 }

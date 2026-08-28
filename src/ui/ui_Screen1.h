@@ -22,6 +22,8 @@ extern void ui_event_Button3(lv_event_t * e);
 extern lv_obj_t * ui_Button3;
 extern lv_obj_t * ui_Checkbox1;
 extern lv_obj_t * ui_Button4;
+extern lv_obj_t * ui_Dropdown1;
+extern lv_obj_t * ui_Slider2;
 // CUSTOM VARIABLES
 extern lv_obj_t * uic_Button1;
 extern lv_obj_t * uic_Button3;
